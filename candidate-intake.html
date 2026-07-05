@@ -8,14 +8,14 @@
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
   :root{
-    --ink:#1B2430;
-    --paper:#F7F5F0;
-    --teal:#3E7C6B;
-    --teal-dim:#3E7C6B33;
-    --gold:#C9A45C;
-    --gray:#7A8088;
-    --line:#DEDAD0;
-    --error:#B4533F;
+    --ink:#2B1832;
+    --paper:#FBF6FA;
+    --teal:#8E3A8C;
+    --teal-dim:#8E3A8C26;
+    --gold:#7B3FA0;
+    --gray:#8A7F91;
+    --line:#EADCE8;
+    --error:#C23B5D;
   }
 
   *{box-sizing:border-box;}
@@ -31,7 +31,7 @@
   /* ---------- top chrome ---------- */
   .topbar{
     position:fixed; top:0; left:0; right:0;
-    display:flex; align-items:center; justify-content:flex-end;
+    display:flex; align-items:center; justify-content:space-between;
     padding:22px clamp(20px,5vw,56px) 0;
     z-index:10;
   }
@@ -182,7 +182,7 @@
     padding:28px 20px; text-align:center; cursor:pointer;
     transition:border-color .15s ease, background .15s ease;
   }
-  .file-drop:hover, .file-drop.dragover{border-color:var(--teal); background:#3E7C6B0d;}
+  .file-drop:hover, .file-drop.dragover{border-color:var(--teal); background:#8E3A8C0d;}
   .file-drop input{display:none;}
   .file-drop-label{font-size:15px; color:var(--gray);}
   .file-drop-label strong{color:var(--ink);}
@@ -220,12 +220,13 @@
 
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 <div class="topbar">
+  <div class="brand" id="brandMark"></div>
   <div class="qcount" id="qcount"></div>
 </div>
 <div class="role-banner" id="roleBanner"></div>
 
 <div class="stage" id="stage"></div>
-<div class="footer-mark">Your information will only be reviewed by our team</div>
+<div class="footer-mark">Your information will only be reviewed by our team.</div>
 
 <script>
 /* ============================================================
@@ -235,7 +236,7 @@
 // 1. Your agency name — currently hidden from the form.
 //    Whenever you're ready to add it, uncomment the line below and
 //    also uncomment the matching line near the bottom of this script.
-// const AGENCY_NAME = "YOUR AGENCY";
+const AGENCY_NAME = "Merittide";
 
 // 2. Paste your Google Apps Script Web App URL here (Deploy > Web app)
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5MsoggHuLQyt-cUpbLy5INk3LfrhVbiCT8r4aoA7b7iAD7Tsy3-kiHwEBgrMYbGf0/exec";
@@ -511,7 +512,7 @@ function renderDone(){
   done.className = 'step done active';
   done.innerHTML = `
     <div class="stamp">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#3E7C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#8E3A8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     </div>
@@ -535,7 +536,7 @@ function renderError(message){
 }
 
 // kick off
-// document.getElementById('brandMark').textContent = AGENCY_NAME; // uncomment when ready to show agency name
+document.getElementById('brandMark').textContent = AGENCY_NAME;
 document.getElementById('roleBanner').textContent = `Applying for: ${CURRENT_ROLE}`;
 renderStep(0);
 </script>
