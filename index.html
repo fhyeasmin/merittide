@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Merittide — Hire Remote Talent, Affordably</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
@@ -25,7 +27,8 @@
     font-family:'Inter',sans-serif;
   }
 
-  .wrap{ max-width:1140px; margin:0 auto; padding:0 24px; }
+  /* Widened from 1140px so the page uses more of a full desktop screen */
+  .wrap{ max-width:1320px; margin:0 auto; padding:0 32px; }
 
   /* ---------- top bar ---------- */
   .top-bar{
@@ -40,7 +43,7 @@
 
   /* ---------- nav bar ---------- */
   .nav-bar{ background:var(--purple-dark); }
-  .nav-bar .wrap{ display:flex; gap:36px; padding:16px 24px; }
+  .nav-bar .wrap{ display:flex; gap:36px; padding:16px 32px; }
   .nav-bar a{
     color:#fff; text-decoration:none; font-size:14px; font-weight:600;
     letter-spacing:.04em; text-transform:uppercase;
@@ -54,8 +57,8 @@
     display:flex; align-items:center; justify-content:center;
     text-align:center;
     padding:80px 24px;
-    /* Swap this background for your own photo later — see comment near the bottom of this file */
-    background:url('your-image.jpg'); background-size:cover; background-position:center;
+    /* Swap 'your-image.jpg' below for your own photo filename any time */
+    background:url('your-image.jpg');
     background-size:cover; background-position:center;
     overflow:hidden;
   }
@@ -208,13 +211,6 @@
 <footer>
   <div class="wrap">© 2026 Merittide. All rights reserved.</div>
 </footer>
-
-<!--
-  TO ADD YOUR OWN HERO PHOTO LATER:
-  Find ".hero{" near the top of the <style> section and replace the
-  "background:linear-gradient(...)" line with:
-  background:url('your-image.jpg'); background-size:cover; background-position:center;
--->
 
 </body>
 </html>
