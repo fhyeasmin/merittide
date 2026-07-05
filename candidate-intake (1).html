@@ -31,7 +31,7 @@
   /* ---------- top chrome ---------- */
   .topbar{
     position:fixed; top:0; left:0; right:0;
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex; align-items:center; justify-content:flex-end;
     padding:22px clamp(20px,5vw,56px) 0;
     z-index:10;
   }
@@ -171,9 +171,9 @@
   }
 
   .role-banner{
-    position:fixed; top:38px; left:0; right:0; text-align:center;
-    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--teal);
-    letter-spacing:.08em; text-transform:uppercase; z-index:9;
+    position:fixed; top:30px; left:0; right:0; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:var(--teal);
+    letter-spacing:.06em; text-transform:uppercase; z-index:9;
   }
 
   /* file upload */
@@ -220,21 +220,22 @@
 
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 <div class="topbar">
-  <div class="brand" id="brandMark"></div>
   <div class="qcount" id="qcount"></div>
 </div>
 <div class="role-banner" id="roleBanner"></div>
 
 <div class="stage" id="stage"></div>
-<div class="footer-mark">Your information is reviewed by our team only</div>
+<div class="footer-mark">Your information will only be reviewed by our team</div>
 
 <script>
 /* ============================================================
    CONFIG — edit your agency name and the questions below
    ============================================================ */
 
-// 1. Your agency name, shown top-left
-const AGENCY_NAME = "YOUR AGENCY";
+// 1. Your agency name — currently hidden from the form.
+//    Whenever you're ready to add it, uncomment the line below and
+//    also uncomment the matching line near the bottom of this script.
+// const AGENCY_NAME = "YOUR AGENCY";
 
 // 2. Paste your Google Apps Script Web App URL here (Deploy > Web app)
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5MsoggHuLQyt-cUpbLy5INk3LfrhVbiCT8r4aoA7b7iAD7Tsy3-kiHwEBgrMYbGf0/exec";
@@ -246,7 +247,7 @@ const QUESTIONS = [
   { id:"linkedin", type:"text", eyebrow:"Profile", q:"Share your LinkedIn profile", placeholder:"linkedin.com/in/...", required:false },
   { id:"resume", type:"file", eyebrow:"Resume", q:"Upload your resume", hint:"PDF or Word doc, up to 5MB", accept:".pdf,.doc,.docx", required:true },
   { id:"portfolio", type:"text", eyebrow:"Portfolio", q:"Share a portfolio or GitHub link", placeholder:"github.com/...", required:false },
-  { id:"expected_compensation", type:"text", eyebrow:"Compensation", q:"What's your expected compensation per month?", placeholder:"e.g. $1,500/month", required:true },
+  { id:"expected_compensation", type:"text", eyebrow:"Compensation", q:"What's your expected compensation per month?", placeholder:"e.g. USD $1,500/month", required:true },
   { id:"notice_period", type:"text", eyebrow:"Availability", q:"What's your notice period, in days?", placeholder:"e.g. 30", required:true },
   { id:"intro_link", type:"text", eyebrow:"Introduce yourself", q:"Share a short introduction of yourself in English (audio or video)", hint:"Upload it to Google Drive or any platform of your choice, then paste the link here", placeholder:"https://drive.google.com/...", required:false },
 ];
@@ -534,7 +535,7 @@ function renderError(message){
 }
 
 // kick off
-document.getElementById('brandMark').textContent = AGENCY_NAME;
+// document.getElementById('brandMark').textContent = AGENCY_NAME; // uncomment when ready to show agency name
 document.getElementById('roleBanner').textContent = `Applying for: ${CURRENT_ROLE}`;
 renderStep(0);
 </script>
