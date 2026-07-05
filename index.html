@@ -10,8 +10,10 @@
   :root{
     --ink:#2B1832;
     --paper:#FBF6FA;
-    --teal:#D62E7D;   /* primary accent (pink) */
-    --gold:#7B3FA0;   /* secondary accent (violet) */
+    --purple-light:#8C5A82;   /* top bar */
+    --purple-dark:#5B3653;    /* nav bar + stats band */
+    --violet:#8E3A8C;         /* primary accent / links / buttons */
+    --cta-teal:#4FA79E;       /* solid CTA button, like the reference */
     --gray:#8A7F91;
     --line:#EADCE8;
     --card:#FFFFFF;
@@ -23,84 +25,98 @@
     font-family:'Inter',sans-serif;
   }
 
-  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .wrap{ max-width:1140px; margin:0 auto; padding:0 24px; }
 
-  /* ---------- nav ---------- */
-  nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:26px 0;
+  /* ---------- top bar ---------- */
+  .top-bar{
+    background:var(--purple-light);
+    padding:18px 0;
   }
-  .nav-links{ display:flex; gap:32px; align-items:center; }
-  .nav-links a{
-    color:var(--ink); text-decoration:none; font-size:15px; font-weight:500;
+  .top-bar .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{
+    font-family:'Fraunces',serif; font-weight:700; font-size:22px;
+    color:#fff; letter-spacing:.01em;
   }
-  .nav-links a:hover{ color:var(--teal); }
-  .nav-cta{
-    background:var(--ink); color:var(--paper) !important; padding:10px 22px;
-    border-radius:100px; font-size:14px !important; font-weight:600 !important;
+
+  /* ---------- nav bar ---------- */
+  .nav-bar{ background:var(--purple-dark); }
+  .nav-bar .wrap{ display:flex; gap:36px; padding:16px 24px; }
+  .nav-bar a{
+    color:#fff; text-decoration:none; font-size:14px; font-weight:600;
+    letter-spacing:.04em; text-transform:uppercase;
   }
-  .nav-cta:hover{ background:var(--teal) !important; }
+  .nav-bar a:hover{ color:var(--cta-teal); }
 
   /* ---------- hero ---------- */
   .hero{
-    text-align:center; padding:70px 0 60px;
-    background:linear-gradient(180deg, #F3E4EF 0%, var(--paper) 65%);
-    border-radius:0 0 40px 40px;
+    position:relative;
+    min-height:560px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding:80px 24px;
+    /* Swap this background for your own photo later — see comment near the bottom of this file */
+    background:linear-gradient(135deg, #6B4066 0%, #8C5A82 50%, #4FA79E 130%);
+    background-size:cover; background-position:center;
+    overflow:hidden;
   }
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--teal);
-    letter-spacing:.1em; text-transform:uppercase; margin-bottom:18px;
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(30,16,30,0.35);
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:820px; }
+
+  .headline-box{
+    display:inline-block;
+    background:rgba(20,10,20,0.45);
+    padding:18px 30px;
+    margin-bottom:26px;
   }
   h1{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:clamp(32px,5.5vw,52px); line-height:1.18;
-    margin:0 auto 22px; max-width:820px;
+    font-family:'Fraunces',serif; font-weight:600; color:#fff;
+    font-size:clamp(28px,4.6vw,44px); line-height:1.25; margin:0;
   }
-  h1 .accent{ color:var(--teal); }
   .hero-sub{
-    color:var(--gray); font-size:17px; line-height:1.7;
-    max-width:600px; margin:0 auto 38px;
+    color:#fff; font-size:17px; line-height:1.75; opacity:.95;
+    max-width:640px; margin:0 auto 36px;
   }
   .hero-ctas{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
   .btn{
-    display:inline-block; text-decoration:none; font-weight:600; font-size:15px;
-    padding:15px 30px; border-radius:100px; transition:transform .12s ease, background .15s ease, color .15s ease;
+    display:inline-flex; align-items:center; gap:10px;
+    text-decoration:none; font-weight:600; font-size:15px;
+    padding:15px 28px; border-radius:6px;
+    transition:transform .12s ease, background .15s ease, color .15s ease;
   }
   .btn:active{ transform:scale(.97); }
-  .btn-primary{ background:var(--teal); color:#fff; }
-  .btn-primary:hover{ background:#B8236A; }
-  .btn-secondary{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
-  .btn-secondary:hover{ border-color:var(--teal); color:var(--teal); }
+  .btn-primary{ background:var(--cta-teal); color:#fff; }
+  .btn-primary:hover{ background:#3E8C84; }
+  .btn-secondary{ background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.7); }
+  .btn-secondary:hover{ background:rgba(255,255,255,0.12); }
 
-  /* ---------- image placeholder ---------- */
-  .hero-image-placeholder{
-    max-width:880px; margin:56px auto 0; border-radius:20px;
-    border:2px dashed var(--line); background:#fff;
-    padding:70px 20px; text-align:center; color:var(--gray);
-    font-family:'IBM Plex Mono',monospace; font-size:13px;
-  }
-
-  /* ---------- stats ---------- */
+  /* ---------- stats band ---------- */
+  .stats-band{ background:var(--purple-dark); padding:52px 0; }
   .stats{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
-    max-width:900px; margin:70px auto 0; padding:0 24px;
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    max-width:960px; margin:0 auto; padding:0 24px;
     text-align:center;
   }
+  .stats > div{ border-right:1px solid rgba(255,255,255,0.2); padding:0 20px; }
+  .stats > div:last-child{ border-right:none; }
   .stat-num{
-    font-family:'Fraunces',serif; font-weight:600; color:var(--teal);
-    font-size:clamp(32px,5vw,46px); line-height:1;
+    font-family:'Fraunces',serif; font-weight:700; color:#fff;
+    font-size:clamp(30px,4.5vw,42px); line-height:1;
   }
-  .stat-label{ color:var(--gray); font-size:14px; margin-top:10px; line-height:1.5; }
+  .stat-label{ color:rgba(255,255,255,0.85); font-size:14px; margin-top:12px; line-height:1.5; }
   .stats-note{
     text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px;
-    color:var(--line); margin-top:14px;
+    color:var(--purple-dark); opacity:.5; margin-top:10px; padding-bottom:6px;
   }
 
   /* ---------- employer partners ---------- */
-  .partners{ padding:100px 0 90px; text-align:center; }
+  .partners{ padding:90px 0 80px; text-align:center; }
   .partners h2{
     font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,3.5vw,32px);
-    margin:0 0 14px; letter-spacing:.01em;
+    margin:0 0 14px; letter-spacing:.01em; color:var(--ink);
   }
   .partners p{ color:var(--gray); font-size:15px; max-width:480px; margin:0 auto 44px; line-height:1.6; }
 
@@ -111,7 +127,7 @@
   .logo-slot{
     background:#fff; border:1.5px dashed var(--line); border-radius:12px;
     height:80px; display:flex; align-items:center; justify-content:center;
-    color:var(--line); font-family:'IBM Plex Mono',monospace; font-size:11px;
+    color:var(--gray); font-family:'IBM Plex Mono',monospace; font-size:11px;
   }
 
   footer{
@@ -120,42 +136,43 @@
   }
 
   @media (max-width:640px){
-    .nav-links{ display:none; }
-    .stats{ grid-template-columns:1fr; gap:36px; }
+    .nav-bar .wrap{ gap:20px; overflow-x:auto; }
+    .stats{ grid-template-columns:1fr; gap:30px; }
+    .stats > div{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:24px; }
+    .stats > div:last-child{ border-bottom:none; padding-bottom:0; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav>
-    <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px;">Merittide</div>
-    <div class="nav-links">
-      <a href="job-board.html">Opportunities</a>
-      <a href="#partners">Employer Partners</a>
-      <a class="nav-cta" href="mailto:hello@merittide.com?subject=Find%20my%20hire">Find my hire</a>
-    </div>
-  </nav>
+<div class="top-bar">
+  <div class="wrap">
+    <div class="logo">Merittide</div>
+  </div>
+</div>
+
+<div class="nav-bar">
+  <div class="wrap">
+    <a href="job-board.html">Opportunities</a>
+    <a href="index.html#partners">Employer Partners</a>
+    <a href="mailto:hello@merittide.com?subject=Find%20my%20hire">Find My Hire</a>
+  </div>
 </div>
 
 <section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">For growing tech teams</div>
-    <h1>Hire remote talent <span class="accent">3–6x more affordably.</span><br>
-        Drive systemic change.<br>
-        Rigorously vetted talent from emerging economies.</h1>
+  <div class="hero-inner">
+    <div class="headline-box">
+      <h1>Hire remote talent 3–6x more affordably.<br>Drive systemic change.<br>Rigorously vetted talent from emerging economies.</h1>
+    </div>
     <p class="hero-sub">We connect ambitious companies with carefully vetted engineering, product, and design talent across Latin America, East Africa, and South &amp; Southeast Asia — building great teams while creating real economic opportunity.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="job-board.html">Discover the latest opportunities</a>
-      <a class="btn btn-secondary" href="mailto:hello@merittide.com?subject=Find%20my%20hire">Find my hire</a>
+      <a class="btn btn-primary" href="job-board.html">Discover the latest opportunities →</a>
+      <a class="btn btn-secondary" href="mailto:hello@merittide.com?subject=Find%20my%20hire">Find My Hire →</a>
     </div>
-
-    <!-- Drop your hero photo, graphic, or product screenshot here later -->
-    <div class="hero-image-placeholder">Your image goes here</div>
   </div>
 </section>
 
-<div class="wrap">
+<div class="stats-band">
   <div class="stats">
     <!-- EDIT THESE: swap in your real numbers whenever you have them -->
     <div>
@@ -171,8 +188,8 @@
       <div class="stat-label">candidates personally reviewed by our team</div>
     </div>
   </div>
-  <div class="stats-note">placeholder stats — update anytime</div>
 </div>
+<div class="stats-note">placeholder stats — update anytime</div>
 
 <section class="partners" id="partners">
   <div class="wrap">
@@ -193,6 +210,13 @@
 <footer>
   <div class="wrap">© 2026 Merittide. All rights reserved.</div>
 </footer>
+
+<!--
+  TO ADD YOUR OWN HERO PHOTO LATER:
+  Find ".hero{" near the top of the <style> section and replace the
+  "background:linear-gradient(...)" line with:
+  background:url('your-image.jpg'); background-size:cover; background-position:center;
+-->
 
 </body>
 </html>
